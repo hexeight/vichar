@@ -41,5 +41,5 @@ jobs:
         with:
           name: static-site
       - name: Upload to Storage Account (Blocked Blob)
-        uses: hexeight/block-blob-split-upload
-        
+        uses: hexeight/block-blob-split-upload@v0.1
+
