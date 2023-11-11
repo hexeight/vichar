@@ -44,8 +44,8 @@ jobs:
       - name: Upload to Storage Account (Blocked Blob)
         uses: hexeight/block-blob-split-upload@main
         with:
-          azureStorageAccount: ${{ secrets.AZ_STORAGE_ACCOUNT }}
-          azureStorageAccountKey: ${{ secrets.AZ_STORAGE_ACCOUNT_KEY }}
+          storageAccountName: ${{ secrets.AZ_STORAGE_ACCOUNT }}
+          storageAccountKey: ${{ secrets.AZ_STORAGE_ACCOUNT_KEY }}
           separator: <vichar-comments/>
 
 
