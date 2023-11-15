@@ -7,8 +7,9 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Vichar.Service;
 
-namespace api
+namespace Vichar.Api
 {
     public static class PostComment
     {
@@ -19,17 +20,18 @@ namespace api
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-            string name = req.Query["name"];
+            string page = req.Query["page"];
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
+            page = page ?? data?.page;
+            log.LogInformation("Adding comment to page " + page);
 
-            string responseMessage = string.IsNullOrEmpty(name)
-                ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {name}. This HTTP triggered function executed successfully.";
+            BlobStorageService blobStorageService = new BlobStorageService();
+            string blockId = blobStorageService.StageBlob(page, "<p>" + data.comment + "</p>");
+            blobStorageService.InsertBlock(page, blockId);
 
-            return new OkObjectResult(responseMessage);
+            return new OkObjectResult(blockId);
         }
     }
 }
