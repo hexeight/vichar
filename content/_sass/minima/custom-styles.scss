@@ -1,2 +1,32 @@
 // Placeholder to allow defining custom styles that override everything else.
 // (Use `_sass/minima/custom-variables.scss` to override variable defaults)
+
+.comment-item {
+    border-bottom: 1px solid #e8e8e8;
+    padding-bottom: 10px;
+}
+
+.comment-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.comment-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.comment-info img {
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.comment-text {
+    margin-bottom: 8px;
+}
+
+.comment-date {
+    color: #888;
+}

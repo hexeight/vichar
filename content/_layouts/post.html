@@ -33,6 +33,24 @@ layout: base
   {%- if site.disqus.shortname -%}
     {%- include disqus_comments.html -%}
   {%- endif -%}
+  <legend></legend>
+  <h2>Comments</h2>
+  <div>
+    <form action="http://localhost:7071/api/PostComment?page={{ page.url }}" method="post">
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name" required><br>
+  
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br>
+      <br/>
+      <textarea id="comment" name="comment" style="width:100%" placeholder="Enter your comment..." required></textarea><br>
+  
+      <input type="submit" value="Submit">
+  </form>
+  </div>
   <vichar-comments/>
+  <hr/>
+  
+  
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
