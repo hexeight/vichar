@@ -65,7 +65,7 @@ namespace Vichar.Service
 
             // Modify Block List and Update Blob
 
-            return "";
+            throw new NotImplementedException();
         }
 
         #region private helpers
